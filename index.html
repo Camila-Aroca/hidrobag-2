@@ -39,7 +39,53 @@
             line-height: 1.5;
             color: #333;
         }
+
+        .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 1.5s ease, transform 1.5s ease;
+        }
+
+        .fade-in.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Delay for each image */
+        .fade-in:nth-child(1) {
+            transition-delay: 0.5s;
+        }
+
+        .fade-in:nth-child(2) {
+            transition-delay: 1.5s;
+        }
+
+        .fade-in:nth-child(3) {
+            transition-delay: 2.5s;
+        }
+
     </style>
+
+    <script>
+        // Detectar cuando la sección es visible en la pantalla
+        document.addEventListener("DOMContentLoaded", function () {
+            const cifrasSection = document.querySelector('.container.py-5');
+            const fadeInElements = cifrasSection.querySelectorAll('.fade-in');
+
+            // Función para verificar si la sección es visible
+            function onScroll() {
+                const sectionPosition = cifrasSection.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+
+                if (sectionPosition < screenPosition) {
+                    fadeInElements.forEach(element => element.classList.add('show'));
+                    window.removeEventListener('scroll', onScroll); // Eliminar el event listener después de que se activen las animaciones
+                }
+            }
+
+            window.addEventListener('scroll', onScroll);
+        });
+    </script>
 <!--
     
 TemplateMo 559 Zay Shop
@@ -98,53 +144,57 @@ https://templatemo.com/tm-559-zay-shop
         </div>
         <div class="row">
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="assets/img/bolsa-verde.png" style="width: 300px; height: 300px;"></a>
+                <a href="#"><img src="assets/img/bolsa-verde.png" class="fade-in" style="width: 300px; height: 300px;"></a>
                 <h3 class="text-center mt-3 mb-2">500 mil millones</h3>
-                <p style="text-align: center;">de bolsas plásticas se utilizan cada año en todo el mundo, muchas de las cuales terminan en nuestros océanos y vertederos.</p>
+                <p style="text-align: center;">de bolsas plásticas se utilizan cada año en todo el mundo...</p>
             </div>
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="assets/img/tortuga-2.png" style="width: 300px; height: 300px;"></a>
+                <a href="#"><img src="assets/img/tortuga-2.png" class="fade-in" style="width: 300px; height: 300px;"></a>
                 <h3 class="text-center mt-3 mb-2">1 de cada 3</h3>
-                <p style="text-align: center;">tortugas marinas ha ingerido plástico a lo largo de su vida, siendo las bolsas plásticas una de las principales amenazas para estas especies.</p>
+                <p style="text-align: center;">tortugas marinas ha ingerido plástico...</p>
             </div>
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="assets/img/reloj.png" style="width: 300px; height: 300px;"></a>
-                <h3 class="text-center mt-3 mb-2"> Hasta 1,000 años</h3>
-                <p style="text-align: center;">es el tiempo que pueden tardar las bolsas plásticas en degradarse en el medio ambiente, liberando toxinas dañinas en el proceso.</p>
+                <a href="#"><img src="assets/img/reloj.png" class="fade-in" style="width: 300px; height: 300px;"></a>
+                <h3 class="text-center mt-3 mb-2">Hasta 1,000 años</h3>
+                <p style="text-align: center;">es el tiempo que pueden tardar las bolsas plásticas...</p>
             </div>
         </div>
     </section>
     <!-- Fin cifras -->
+    <hr style="border-top: 2px solid #5f5f5f; width: 100%; margin: 40px auto;">
 
 
     <!-- Sección equipo-->
-    <section class="bg-info text-dark">
-        <div class="container">
-            <div class="row align-items-center py-5">
-                <div class="col-md-7 text-white">
-                    <h1>Nuestro Equipo</h1>
-                    <p style="color: #333; text-align: justify;">
-                        Somos un equipo de estudiantes de Informática y Redes de Duoc UC, unidos por nuestra 
-                        pasión por la tecnología, la innovación y el cuidado del medio ambiente. 
-                        Inspirados por el desafío de reducir la contaminación plástica, decidimos crear 
-                        Hidrobag, un proyecto que combina nuestras habilidades de investigación, creatividad 
-                        y curiosidad. Con Hidrobag, no solo proponemos una solución sostenible, sino también 
-                        un modelo de emprendimiento que demuestra cómo las ideas pueden generar un impacto 
-                        positivo en el mundo.
-                    </p>
-                </div>
-                <div class="col-md-5">
-                    <img src="assets/img/equipo-2.png" alt="About Hero" style="width: 500px; height: 500px; margin-right: 30px;">
+    <div>
+        <section class="bg-white text-dark">
+            <div class="container" style="margin: auto;">
+                <div class="row align-items-center py-5">
+                    <div class="col-md-7">
+                        <h1 class="h1" style="margin-bottom: 30px;">Nuestro Equipo</h1>                        <p style="color: #333; text-align: justify;">
+                            Somos un equipo de estudiantes de Informática y Redes de Duoc UC, unidos por nuestra 
+                            pasión por la tecnología, la innovación y el cuidado del medio ambiente. 
+                            Inspirados por el desafío de reducir la contaminación plástica, decidimos crear 
+                            Hidrobag, un proyecto que combina nuestras habilidades de investigación, creatividad 
+                            y curiosidad. Con Hidrobag, no solo proponemos una solución sostenible, sino también 
+                            un modelo de emprendimiento que demuestra cómo las ideas pueden generar un impacto 
+                            positivo en el mundo.
+                        </p>
+                    </div>
+                    <div class="col-md-5">
+                        <img src="assets/img/equipo-2.png" alt="About Hero" style="width: 500px; height: 500px; margin-right: 30px;">
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
     <!-- Fin sección equipo -->
+    <hr style="border-top: 2px solid #5f5f5f; width: 100%; margin: 40px auto;">
+
 
     <!-- Start Contact -->
     <div class="container py-5">
         <div class="row py-5">
-            <h1 class="h1 text-center" style="margin-bottom: 50px;">¿Quieres saber más? ¡Contáctanos!</h1>
+            <h1 class="h1" style="margin-bottom: 50px; color: #333;">¿Quieres saber más? ¡Contáctanos!</h1>
             <form id="contactForm"class="col-md-9 m-auto" method="post" role="form">
                 <div class="row">
                     <div class="form-group col-md-6 mb-3">
